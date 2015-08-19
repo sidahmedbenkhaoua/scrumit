@@ -1,0 +1,270 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>dz.sbenkhaoua.scrumit</groupId>
+    <artifactId>scrumit</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>scrumit</name>
+    <licenses>
+        <license>
+            <name>Mit licence</name>
+            <url>http://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <properties>
+        <!-- common properties -->
+        <project.stage>Development</project.stage>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.java.version>1.8</project.java.version>
+
+        <!-- maven-compiler-plugin -->
+        <maven.min>3.3.3</maven.min>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!-- other maven plugin versions -->
+        <maven.compiler.plugin>3.2</maven.compiler.plugin>
+        <maven.dependency.plugin>2.10</maven.dependency.plugin>
+        <maven.surefire.plugin>2.18.1</maven.surefire.plugin>
+        <maven.war.plugin>2.6</maven.war.plugin>
+
+        <!-- WildFly maven plugin versions -->
+        <wildfly.maven.plugin>1.0.2.Final</wildfly.maven.plugin>
+
+        <webapp.directory>src/main/webapp</webapp.directory>
+
+        <!-- Checkstyle configuration -->
+        <linkXRef>false</linkXRef>
+        <checkstyle.config.location>checkstyle/checkstyle.xml</checkstyle.config.location>
+
+        <!-- === dependencies version === -->
+
+        <!-- Javax annotation -->
+        <version.javax.annotation>1.2</version.javax.annotation>
+
+        <!-- Javax WebServices Rest -->
+        <version.javax.ws.rs-api>2.0</version.javax.ws.rs-api>
+
+        <!-- Javax EL -->
+        <version.javax.el-api>3.0.0</version.javax.el-api>
+
+        <!-- Javax JSON -->
+        <version.javax.json-api>1.0</version.javax.json-api>
+        <version.jackson>2.5.4</version.jackson>
+
+        <!-- Javax JPA and EclipseLink -->
+        <version.javax.jpa>2.1.0</version.javax.jpa>
+        <version.eclipselink>2.6.1-RC1</version.eclipselink>
+
+        <!-- Javax Validation -->
+        <version.javax.validation-api>1.1.0.Final</version.javax.validation-api>
+
+        <!-- Javax CDI, Weld and Deltaspike -->
+        <version.javax.cdi>1.2</version.javax.cdi>
+        <version.weld>2.2.14.Final</version.weld>
+        <version.deltaspike>1.4.1</version.deltaspike>
+
+        <!-- Javax Transaction -->
+        <version.javax.transaction>1.2</version.javax.transaction>
+
+        <!-- Javax Servlet, JSTL and JSP -->
+        <version.javax.servlet-api>3.1.0</version.javax.servlet-api>
+        <version.javax.servlet.jsp-api>2.3.1</version.javax.servlet.jsp-api>
+        <version.jstl>1.2</version.jstl>
+
+        <!-- Javax Resource -->
+        <version.javax.resource-api>1.7</version.javax.resource-api>
+
+        <!-- JBoss dependency versions -->
+        <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
+
+        <!-- PostgreSQL jdbc driver -->
+        <version.postgresql>9.4-1201-jdbc41</version.postgresql>
+
+
+    </properties>
+
+    <dependencies>
+
+        <!-- Javax JPA and EclipseLink -->
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>javax.persistence</artifactId>
+            <version>${version.javax.jpa}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>org.eclipse.persistence.core</artifactId>
+            <version>${version.eclipselink}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>org.eclipse.persistence.jpa</artifactId>
+            <version>${version.eclipselink}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>org.eclipse.persistence.jpa.jpql</artifactId>
+            <version>${version.eclipselink}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Javax Validation -->
+
+
+        <!-- Javax WebServices Rest -->
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>${version.javax.ws.rs-api}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Javax EL -->
+
+        <!-- Javax JSON and Jackson -->
+        <dependency>
+            <groupId>javax.json</groupId>
+            <artifactId>javax.json-api</artifactId>
+            <version>${version.javax.json-api}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${version.jackson}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Javax Transaction -->
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>javax.transaction-api</artifactId>
+            <version>${version.javax.transaction}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Javax Resource -->
+
+
+        <!-- CDI, Weld and DeltaSpike -->
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>${version.javax.cdi}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- PostgreSQL JDBC -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${version.postgresql}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Google Guava -->
+
+
+        <!-- Groovy -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>javax.sql</groupId>
+            <artifactId>jdbc-stdext</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <!-- Java 1.8 compatibility and activates annotation processors -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin}</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven.dependency.plugin}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven.war.plugin}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat6-maven-plugin</artifactId>
+                <version>2.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <!-- skips all tests -->
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven.surefire.plugin}</version>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    <developers>
+
+        <developer>
+            <id>sbenkhaoua</id>
+            <name>Sidahmed Benkhaoua</name>
+            <organization>Icon Software</organization>
+            <email>s.benkhaoua@iconsoftware.dz</email>
+            <roles>
+                <role>web-developer</role>
+                <role>business-analyst</role>
+            </roles>
+            <timezone>GMT+1</timezone>
+        </developer>
+    </developers>
+
+</project>
+
+

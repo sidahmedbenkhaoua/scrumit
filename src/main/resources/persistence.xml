@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * persistence.xml v2.0
+ * JPA main configuration,
+ * 
+* Copyright(c) sbenkhaoua
+ * Author: benkhaoua sidahmed
+ * Modified date: 19/08/2015
+ * http://www.sbenkhaoua.blogsoft.com
+ -->
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+	<persistence-unit name="xpertizPU"	transaction-type="JTA">
+	
+		<description>scrumu-it  Application Persistence Unit</description>
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>jdbc/scrumitDS</jta-data-source>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<!-- JPA properties -->
+			<property name="javax.persistence.schema-generation.database.action" value="none" />
+			<property name="javax.persistence.schema-generation-target" value="database" />
+			
+
+			<!-- EclipseLink properties -->
+			<property name="eclipselink.target-database"
+				value="org.eclipse.persistence.platform.database.PostgreSQLPlatform" />
+			<property name="eclipselink.target-server" value="JBoss" />
+			<property name="eclipselink.logging.level" value="info" />
+			<property name="eclipselink.logging.timestamp" value="false" />
+			<property name="eclipselink.logging.thread" value="false" />
+			<property name="eclipselink.logging.session" value="true" />
+			<property name="eclipselink.logging.exceptions" value="true" />
+			<property name="eclipselink.cache.size.default" value="0" />
+			<property name="eclipselink.cache.type.default" value="none" />
+			<property name="eclipselink.query-results-cache" value="false" />
+			<property name="eclipselink.deploy-on-startup" value="true" />
+		</properties>
+		
+	</persistence-unit>
+
+</persistence>
+
