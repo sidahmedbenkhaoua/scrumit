@@ -13,7 +13,7 @@ import javax.ws.rs.Path;
  * Created by dev on 19/08/15.
  */
 @RequestScoped
-@Path("/expertiseCategory")
+@Path("/projectCtrl")
 public class ProjectController extends ScrumItController<Project> {
 
     private static final long serialVersionUID = 1L;
